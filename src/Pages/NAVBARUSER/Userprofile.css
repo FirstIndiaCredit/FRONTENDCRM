@@ -1,0 +1,13 @@
+/* Add this CSS file for media queries */
+
+@media (max-width: 768px) {
+    .min-h-screen {
+        max-width: 100%;
+    }
+
+
+
+
+
+
+}
