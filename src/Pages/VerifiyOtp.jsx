@@ -6,6 +6,7 @@ function VerifyOTP() {
   const [otp, setOtp] = useState("");
   const [userId, setUserId] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -17,6 +18,7 @@ function VerifyOTP() {
 
   const handleOTPSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true); // Start loading
     try {
       const response = await fetch(
         "https://backendcrm.vercel.app/api/v1/user/verifyOTP",
@@ -38,21 +40,26 @@ function VerifyOTP() {
     } catch (e) {
       console.log("error: ", e);
       setError("An error occurred. Please try again.");
+    } finally {
+      setLoading(false); // Stop loading
     }
   };
 
   return (
     <div className="flex min-h-screen flex-wrap text-slate-800">
-      <div className="flex w-full  flex-col">
-        <div className="flex  justify-center py-4">
+      <div className="flex w-full flex-col items-center">
+        <div className="flex justify-center py-4">
           <a href="/" className="text-2xl font-bold text-blue-600">
             FirstIndiaCredit.
           </a>
         </div>
-        <div className="my-auto mx-auto flex flex-col justify-center px-6 py-8 rounded-lg items-center border  lg:w-[28rem]">
-          <p className="text-center text-3xl font-bold md:text-left md:leading-tight">
-            Verify Your Email
-          </p>
+        <div className="my-auto mx-auto flex flex-col justify-center px-6 py-8 rounded-lg items-center border lg:w-[28rem] bg-white shadow-lg">
+          <div className="flex items-center mb-4">
+            <img src="/logo.jpg" alt="Logo" className="w-12 h-12 rounded-lg mr-4" />
+            <p className="text-center text-3xl font-bold md:text-left md:leading-tight">
+              Verify Your Email
+            </p>
+          </div>
           {error && <div className="mb-4 text-red-600">{error}</div>}
           <form
             onSubmit={handleOTPSubmit}
@@ -73,8 +80,9 @@ function VerifyOTP() {
             <button
               type="submit"
               className="mt-6 rounded-lg bg-blue-600 px-4 py-2 text-center text-base font-semibold text-white shadow-md outline-none ring-blue-500 ring-offset-2 transition hover:bg-blue-700 focus:ring-2 md:w-32"
+              disabled={loading} // Disable button while loading
             >
-              Verify
+              {loading ? "Verifying..." : "Verify"}
             </button>
           </form>
         </div>

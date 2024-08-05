@@ -86,11 +86,11 @@ function Signin() {
                 className="w-10 h-10 rounded-lg"
               />
             </div>
-            <p className="text-center text-3xl font-bold md:leading-tight md:text-left md:text-5xl">
-              Welcome back <br />
+            <p className="text-center text-3xl mt-2 font-bold md:leading-tight md:text-left md:text-5xl">
+              Welcome
               to <span className="text-blue-600">FIC</span>
             </p>
-            <p className="mt-6 text-center font-medium md:text-left">
+            <p className="mt-2 text-center font-medium md:text-left">
               Sign in to your account below.
             </p>
             <form
@@ -138,9 +138,8 @@ function Signin() {
               </Link>
               <button
                 type="submit"
-                className={`rounded-lg bg-blue-600 px-4 py-2 text-center text-base font-semibold text-white shadow-md outline-none ring-blue-500 ring-offset-2 transition hover:bg-blue-700 focus:ring-2 w-full ${
-                  loading ? "opacity-50 cursor-not-allowed" : ""
-                }`}
+                className={`rounded-lg bg-blue-600 px-4 py-2 text-center text-base font-semibold text-white shadow-md outline-none ring-blue-500 ring-offset-2 transition hover:bg-blue-700 focus:ring-2 w-full ${loading ? "opacity-50 cursor-not-allowed" : ""
+                  }`}
                 disabled={loading} // Disable button when loading
               >
                 {loading ? "Signing In..." : "Sign in"}

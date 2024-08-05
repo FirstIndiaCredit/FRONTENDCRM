@@ -39,11 +39,11 @@ function UserDashNavBar() {
     <>
       {isLoading && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="relative flex items-center justify-center">
+          <div className="relative flex items-center h-4 w-4 justify-center">
             <div className="spinner">
               <div className="logo-bounce">
                 <img
-                  src="/logo.jpg" // Update this path if your logo is stored elsewhere
+                  src="/logo.jpg"
                   alt="Logo"
                   className="logo"
                 />
@@ -85,8 +85,8 @@ function UserDashNavBar() {
               <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
                 <div
                   className={`w-14 h-14 border-4 rounded-full flex items-center justify-center ${isActive("/user/dashboard")
-                      ? "bg-blue-600 border-blue-600"
-                      : "bg-gray-400"
+                    ? "bg-blue-600 border-blue-600"
+                    : "bg-gray-400"
                     }`}
                 >
                   <FontAwesomeIcon

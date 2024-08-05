@@ -63,9 +63,9 @@ function UserStatus() {
           <img
             src={`/logo.jpg`}
             alt="Logo"
-            className="md:h-10 h-7 w-auto md:ml-4 rounded-lg border-white border-2 "
+            className="md:h-10 ml-2 h-7 w-auto md:ml-4 rounded-lg border-white border-2 "
           />
-          <h1 className="text-2xl md:text-3xl md:m-auto mr-6 md:font-semibold md:text-center md:justify-center  ">
+          <h1 className="text-2xl md:text-3xl md:m-auto lg:m-auto mr-6 md:font-semibold md:text-center md:justify-center  ">
             Loan Applications
           </h1>
         </header>
