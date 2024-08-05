@@ -266,7 +266,7 @@ function Signup() {
                 </div>
                 <div className="block">
                   <input
-                    className="mr-2 h-5 w-5 appearance-none rounded border border-gray-300 bg-contain bg-no-repeat align-top text-black shadow checked:bg-blue-600 focus:border-blue-600 focus:shadow"
+                    className="w-4 h-4 m-2 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600  focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                     type="checkbox"
                     id="t&C"
                     required

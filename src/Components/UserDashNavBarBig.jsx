@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
-function ExpandableCard() {
+function UserDasNavBarBig() {
   const [isOpen, setIsOpen] = useState(false);
   const [noti, setNoti] = useState(false);
   const [userImage, setUserImage] = useState("");
+  const [imageLoading, setImageLoading] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -29,7 +30,7 @@ function ExpandableCard() {
   };
 
   return (
-    <div className="md:block lg:hidden"> {/* Show on tablet, hide on desktop */}
+    <div className="md:block lg:hidden">
       {isOpen && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
           <div className="bg-white shadow-lg rounded-lg p-4 w-full max-w-md mx-4 relative">
@@ -49,11 +50,17 @@ function ExpandableCard() {
                     className="relative w-12 h-12 rounded-lg text-xs text-gray-500 hover:bg-blue-gray-500/10 active:bg-blue-gray-500/30"
                     type="button"
                   >
-                    <img
-                      className="w-8 h-8"
-                      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAACXBIWXMAAAsTAAALEwEAmpwYAAAD10lEQVR4nO2dy4tcZRDFT3wrgi9UUFEUXxtdGEREZEDjeL/THaOLEVciiCCI+CfEfyGu1E0WIuLtqjtRJCuJIiLiQgQRRVE0gi+MxnfUmJZunBl1CJNJ3+6qW10/OJteNOec6q9vQV9uA0mSJEmSJEmSJF3gzvoaFGlQ5Md/1KA0V1vbmg+qwe0o8j2ow/9o9FrR26ztxabo/Sj6+7ryVyV/ojQPWduMSZHHQDly9PJXh3AERR8HhlusLcdg4ZWTUOTJjYv//1eS7sbWp062tt9tFuozQdm76fLX9DK21WdZx+gmd+25CNS3Jyh/5eL8Lvr1pdZxukVZvg6U/ROXv3Zd+AJ9vcE6VjfoyTZQD7ZX/qp+QiW0jucbygOg/jGF8v+9pj5sHdMhwy3j1XFqxa+7LuzKNXWFpfoUFH1mZuWvDaHGwu7TMNfsWD4bRffNvPzVIei+sYe5pFdfjCLvmJW/pvdAuQxzRTW4HpTPHZS/chK+RG95K+aCarAIyg/mpXOdfkZp+ggN5cHxKmhf9vAoJ+Ewij6CeMx4zeSkg5Bd2LnzBISg2nsqqM+al8pNS7BUn45O03vpHFBedVDm8DhPwhuo6vPRSbbXl6Po++YlcmJ9hJ5chU5R6Y0o8pWD8oYtnYRvUeQWdAI2O1DkF/PS2Lp+Awf3wjWjH8Q9r5mc9CToYVAfhT86tmYy0po6WjOLPGdeCmc+hMZ+TV2sz0XR18zLoNUQ9E3coRfYlN+TK0D9wLwEmg/h4/GtkjOFg5tA+do8PN3oAHqDW2dTfk/vQdFfHYQe+pIcQk/vm/7tgUX/sg+rTrVyW2TbLNUnosgT9gG1I5Knx7dUtsLoh+uiz9uH0m6pyB70XzxjsvLvbs4D9XXzMOyq5C1sf+HC4yt/sb4SRT+0D6HdVtFP0JdrN1d+v7kZ1G/MzTOIinyHqlk4tvJLU8YrlbVpRpMcGne78QD0M3uzGlNFP914AJ7u12E0yf5j/QrKIXAK5VMrtI75p0ptZY51AcwB2JfAPAH2RdBI5lgXwByAfQnME2BfBI1kjnUBzAH4/oTRub/wAencX/iAdO4vfEA69xc+IJ37Cx+Qzv2FD0jn/sIHpHN/4QPSub/wAencX/iAdO4vfEA69xc+IJ37Cx+Qzv2FD0jn/sIHpHN/4QPSub/wAencX/iAdO4vfEA69xc+IJ37Cx+Qzv2FD0jn/sIHpHN/EzP6H6/pBTwY3l8LAZspBpTw/iZm9KiW0dNC2g93oJWnFXr31wqVXjJ+Hn8rz4SW0XtIq+G8+0uSJEmSJEmSJEmSJEkwD/wNXg1NDBMDdlYAAAAASUVORK5CYII="
-                      alt="Dashboard Icon"
-                    />
+                    {imageLoading && (
+                      <div className="w-8 h-8 border-4 border-blue-600 border-t-transparent border-t-4 border-solid rounded-full animate-spin"></div>
+                    )}
+                    {!imageLoading && (
+                      <img
+                        className="w-8 h-8"
+                        src={userImage || "./logo.jpg"}
+                        alt="User"
+                        onLoad={() => setImageLoading(false)}
+                      />
+                    )}
                   </button>
                   <div className="ml-4">
                     <p className="text-gray-600">Dashboard</p>
@@ -75,7 +82,7 @@ function ExpandableCard() {
                     >
                       <path
                         fillRule="evenodd"
-                        d="M1.5 5.625c0-1.036.84-1.875 1.875-1.875h17.25c1.035 0 1.875.84 1.875 1.875v12.75c0 1.035-.84 1.875-1.875 1.875H3.375A1.875 1.875 0 011.5 18.375V5.625zM21 9.375A.375.375 0 0020.625 9h-7.5a.375.375 0 00-.375.375v7.5c0 .207.168.375.375.375h7.5a.375.375 0 00.375-.375v-7.5zM20.25 6h-7.5A.375.375 0 0012.375 6v-1.5c0-.207.168-.375.375-.375h7.5a.375.375 0 00.375.375V6a.375.375 0 00-.375.375z"
+                        d="M1.5 5.625c0-1.036.84-1.875 1.875-1.875h17.25c1.035 0 1.875.84 1.875 1.875v12.75c0 1.035-.84 1.875-1.875 1.875H3.375A1.875 1.875 0 01.5 18.375V5.625zM21 9.375A.375.375 0 0020.625 9h-7.5a.375.375 0 00-.375.375v7.5c0 .207.168.375.375.375h7.5a.375.375 0 00.375-.375v-7.5zM20.25 6h-7.5A.375.375 0 0012.375 6v-1.5c0-.207.168-.375.375-.375h7.5a.375.375 0 00.375.375V6a.375.375 0 00-.375.375z"
                         clipRule="evenodd"
                       />
                     </svg>
@@ -109,6 +116,31 @@ function ExpandableCard() {
                   </div>
                 </button>
               </div>
+              <div className="flex items-center w-full">
+                <Link to="/user/profile" className="flex items-center w-full">
+                  <button
+                    className="relative w-12 h-12 rounded-lg text-xs text-gray-500 hover:bg-blue-gray-500/10 active:bg-blue-gray-500/30"
+                    type="button"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="#004aad"
+                      aria-hidden="true"
+                      className="w-8 h-8 text-inherit"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M18.685 19.097A9.723 9.723 0 0021.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 003.065 7.097A9.716 9.716 0 0012 21.75a9.716 9.716 0 006.685-2.653zm-3.67-1.593A7.475 7.475 0 0112 20.25c-1.65 0-3.205-.525-4.515-1.473a7.468 7.468 0 01-2.33-5.777c0-4.126 3.361-7.487 7.487-7.487 4.126 0 7.487 3.361 7.487 7.487a7.468 7.468 0 01-2.33 5.777 7.475 7.475 0 01-4.515 1.473zm-.47-9.95a.752.752 0 00-1.061 1.061l1.5 1.5a.752.752 0 001.061 0l2.5-2.5a.752.752 0 10-1.061-1.061l-1.969 1.968-1.369-1.368a.752.752 0 00-1.061 0z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                  </button>
+                  <div className="ml-4">
+                    <p className="text-gray-600">Profile</p>
+                  </div>
+                </Link>
+              </div>
               <div className="flex items-center">
                 <button
                   onClick={handleSignout}
@@ -127,13 +159,13 @@ function ExpandableCard() {
                     >
                       <path
                         fillRule="evenodd"
-                        d="M9 3.75a.75.75 0 011.5 0V4.5h3V3.75a.75.75 0 011.5 0V4.5h2.25c.69 0 1.25.56 1.25 1.25V6H5.5v-.25c0-.69.56-1.25 1.25-1.25H9v-.75zM5.5 7.5h13v10.25c0 .69-.56 1.25-1.25 1.25H6.75c-.69 0-1.25-.56-1.25-1.25V7.5zm6 6.25a.75.75 0 011.5 0v3a.75.75 0 01-1.5 0v-3z"
+                        d="M10.75 4.5a.75.75 0 00-1.5 0v1.25H3a.75.75 0 000 1.5h6.25V11a.75.75 0 001.5 0V7.25H21a.75.75 0 000-1.5h-9.75V4.5zM3 12.75a.75.75 0 011.5 0v5.5h2.25a.75.75 0 000-1.5H4.5v-4h14.25a.75.75 0 000-1.5H3.75a.75.75 0 01-.75.75z"
                         clipRule="evenodd"
                       />
                     </svg>
                   </button>
                   <div className="ml-4">
-                    <p className="text-gray-600">Sign Out</p>
+                    <p className="text-gray-600">Sign out</p>
                   </div>
                 </button>
               </div>
@@ -141,18 +173,8 @@ function ExpandableCard() {
           </div>
         </div>
       )}
-      {!isOpen && (
-        <div className="fixed bottom-4 right-4 z-50">
-          <button
-            onClick={toggleCard}
-            className="fixed bottom-6 right-4 bg-blue-500 text-white rounded-full p-4 shadow-lg hover:bg-blue-600 transition-colors"
-          >
-            {isOpen ? 'Close' : 'Open Menu'}
-          </button>
-        </div>
-      )}
     </div>
   );
 }
 
-export default ExpandableCard;
+export default UserDasNavBarBig;
