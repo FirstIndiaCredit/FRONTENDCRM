@@ -88,7 +88,7 @@ function Signin() {
             </div>
             <p className="text-center text-3xl mt-2 font-bold md:leading-tight md:text-left md:text-5xl">
               Welcome
-              to <span className="text-blue-600">FIC</span>
+              {/* to <span className="text-blue-600">FIC</span> */}
             </p>
             <p className="mt-2 text-center font-medium md:text-left">
               Sign in to your account below.
