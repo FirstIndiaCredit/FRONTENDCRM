@@ -230,9 +230,35 @@ function L2() {
     }
   };
 
+  const requiredFieldsPerStep = {
+    1: ["name", "email", "referralId", "phone"],
+    2: ["amount", "duration.value", "motherName", "fatherName"],
+    3: ["maritalStatus", "residenceType", "currentAddress"],
+    4: ["cityState", "pincode", "salary", "companyName"],
+    5: ["totalWorkExperience", "yearsInPresentJob", "officialEmail", "designation"],
+    6: ["officeAddress", "officeCityState", "officePincode"],
+    7: ["reference1Name", "reference1Phone", "reference1Address"],
+    8: ["aadhaarImage", "panCardImage", "otherDocumentImage"],
+  };
+
+  const isStepValid = () => {
+    const fields = requiredFieldsPerStep[currentStep];
+    return fields.every((field) => {
+      if (field.includes(".")) {
+        const [parent, child] = field.split(".");
+        return formData[parent][child];
+      }
+      return formData[field];
+    });
+  };
+
   const nextStep = () => {
-    if (currentStep < totalSteps) {
-      setCurrentStep(currentStep + 1);
+    if (isStepValid()) {
+      if (currentStep < totalSteps) {
+        setCurrentStep(currentStep + 1);
+      }
+    } else {
+      alert("Please fill in all required fields for this step");
     }
   };
 
@@ -561,7 +587,7 @@ function L2() {
           <h2 className="text-2xl font-semibold mb-4">Car Loan Application</h2>
           <form onSubmit={handleSubmit}>
             <div className="mb-6">{renderStep(currentStep)}</div>
-            <div className="flex justify-between">
+            <div className="flex justify-between items-center">
               {currentStep > 1 && (
                 <button
                   type="button"
@@ -582,7 +608,7 @@ function L2() {
                   close
                 </button>
               )}
-              <div className="text-center font-semibold">{currentStep}{"/8"}</div>
+              <div className="text-center  font-semibold text-lg text-gray-500">{currentStep}{"/8"}</div>
               {currentStep < totalSteps && (
                 <button
                   type="button"

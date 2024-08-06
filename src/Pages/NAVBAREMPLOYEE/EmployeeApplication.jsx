@@ -59,6 +59,7 @@ function EmployeeApplication() {
 
   // Check if there are any rejected loans
   const hasRejectedLoans = data.some((loan) => loan.isRejected);
+  const hasApprovedLoans = data.some((loan) => loan.isApproved);
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -91,28 +92,27 @@ function EmployeeApplication() {
               </header>
               <div className="flex space-x-4 mb-8">
                 <button
-                  className={`px-4 py-2 rounded-lg ${
-                    !showApproved && !showRejected
+                  className={`px-4 py-2 rounded-lg ${!showApproved && !showRejected
                       ? "bg-blue-500 text-white"
                       : "bg-gray-300"
-                  }`}
+                    }`}
                   onClick={handleAllClick}
                 >
                   All
                 </button>
-                <button
-                  className={`px-4 py-2 rounded-lg ${
-                    showApproved ? "bg-green-500 text-white" : "bg-gray-300"
-                  }`}
-                  onClick={handleApprovedClick}
-                >
-                  Approved
-                </button>
+                {hasApprovedLoans && (
+                  <button
+                    className={`px-4 py-2 rounded-lg ${showApproved ? "bg-green-500 text-white" : "bg-gray-300"
+                      }`}
+                    onClick={handleApprovedClick}
+                  >
+                    Approved
+                  </button>
+                )}
                 {hasRejectedLoans && (
                   <button
-                    className={`px-4 py-2 rounded-lg ${
-                      showRejected ? "bg-red-500 text-white" : "bg-gray-300"
-                    }`}
+                    className={`px-4 py-2 rounded-lg ${showRejected ? "bg-red-500 text-white" : "bg-gray-300"
+                      }`}
                     onClick={handleRejectedClick}
                   >
                     Rejected

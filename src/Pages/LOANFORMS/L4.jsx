@@ -588,7 +588,7 @@ function L4() {
           </h2>
           <form onSubmit={handleSubmit}>
             <div className="mb-6">{renderStep(currentStep)}</div>
-            <div className="flex justify-between">
+            <div className="flex justify-between items-center">
               {currentStep > 1 && (
                 <button
                   type="button"
@@ -611,7 +611,7 @@ function L4() {
                   close
                 </button>
               )}
-              <div className="text-center font-semibold">{currentStep}{"/8"}</div>
+              <div className="text-center  font-semibold text-lg text-gray-500">{currentStep}{"/8"}</div>
               {currentStep < totalSteps && (
                 <button
                   type="button"
