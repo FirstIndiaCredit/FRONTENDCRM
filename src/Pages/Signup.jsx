@@ -138,11 +138,7 @@ function Signup() {
               <div className="relative mt-60 flex items-center justify-center">
                 <div className="spinner">
                   <div className="logo-bounce">
-                    <img
-                      src="/logo.jpg"
-                      alt="Logo"
-                      className="logo"
-                    />
+                    <img src="/logo.jpg" alt="Logo" className="logo" />
                   </div>
                 </div>
               </div>
@@ -264,20 +260,20 @@ function Signup() {
                     </select>
                   </div>
                 </div>
-                <div className="block">
+                <div>
                   <input
-                    className="w-4 h-4 m-2 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600  focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                    className="w-4 h-4 mx-2 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500  "
                     type="checkbox"
-                    id="t&C"
                     required
                   />
-                  <label className="inline-block" htmlFor="t&C">
-                    {" "}
+
+                  <a
+                    target="_blank"
+                    href="https://firstindiacredit.com/terms-conditions/"
+                  >
                     I agree to the{" "}
-                    <a className="underline" target="_blank" href="https://firstindiacredit.com/terms-conditions/">
-                      Terms and Conditions
-                    </a>
-                  </label>
+                    <span className="underline">Terms and Conditions</span>
+                  </a>
                 </div>
                 <button
                   type="submit"

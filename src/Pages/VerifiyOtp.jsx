@@ -7,6 +7,8 @@ function VerifyOTP() {
   const [userId, setUserId] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [canResend, setCanResend] = useState(false);
+  const [timeLeft, setTimeLeft] = useState(60);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -16,12 +18,23 @@ function VerifyOTP() {
     }
   }, [location.state]);
 
+  useEffect(() => {
+    let timer;
+    if (timeLeft > 0) {
+      timer = setTimeout(() => setTimeLeft(timeLeft - 1), 1000);
+    } else {
+      setCanResend(true);
+    }
+
+    return () => clearTimeout(timer);
+  }, [timeLeft]);
+
   const handleOTPSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true); // Start loading
+    setLoading(true);
     try {
       const response = await fetch(
-        "https://backendcrm.vercel.app/api/v1/user/verifyOTP",
+        "http://localhost:3000/api/v1/user/verifyOTP",
         {
           method: "POST",
           headers: {
@@ -41,7 +54,25 @@ function VerifyOTP() {
       console.log("error: ", e);
       setError("An error occurred. Please try again.");
     } finally {
-      setLoading(false); // Stop loading
+      setLoading(false);
+    }
+  };
+
+  const handleResendOTP = async () => {
+    setCanResend(false);
+    setTimeLeft(60);
+    try {
+      await fetch("http://localhost:3000/api/v1/user/resend-otp", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ userId }),
+      });
+      alert("OTP resent successfully");
+    } catch (e) {
+      console.log("error: ", e);
+      setError("An error occurred while resending OTP. Please try again.");
     }
   };
 
@@ -55,7 +86,11 @@ function VerifyOTP() {
         </div>
         <div className="my-auto mx-auto flex flex-col justify-center px-6 py-8 rounded-lg items-center border lg:w-[28rem] bg-white shadow-lg">
           <div className="flex items-center mb-4">
-            <img src="/logo.jpg" alt="Logo" className="w-12 h-12 rounded-lg mr-4" />
+            <img
+              src="/logo.jpg"
+              alt="Logo"
+              className="w-12 h-12 rounded-lg mr-4"
+            />
             <p className="text-center text-3xl font-bold md:text-left md:leading-tight">
               Verify Your Email
             </p>
@@ -79,11 +114,23 @@ function VerifyOTP() {
             </div>
             <button
               type="submit"
-              className="mt-6 rounded-lg bg-blue-600 px-4 py-2 text-center text-base font-semibold text-white shadow-md outline-none ring-blue-500 ring-offset-2 transition hover:bg-blue-700 focus:ring-2 md:w-32"
-              disabled={loading} // Disable button while loading
+              className="mt-6 rounded-lg bg-blue-600 px-4 py-2 w-full text-center text-base font-semibold text-white shadow-md outline-none ring-blue-500 ring-offset-2 transition hover:bg-blue-700 focus:ring-2 md:w-32"
+              disabled={loading}
             >
               {loading ? "Verifying..." : "Verify"}
             </button>
+            {canResend ? (
+              <button
+                onClick={handleResendOTP}
+                className="mt-4 rounded-lg bg-gray-600 w-full px-4 py-2 text-center text-base font-semibold text-white shadow-md outline-none ring-gray-500 ring-offset-2 transition hover:bg-gray-700 focus:ring-2 md:w-32"
+              >
+                Resend OTP
+              </button>
+            ) : (
+              <p className="mt-4 text-sm text-gray-500">
+                Resend OTP in {timeLeft} seconds
+              </p>
+            )}
           </form>
         </div>
       </div>
