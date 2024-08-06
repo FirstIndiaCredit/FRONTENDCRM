@@ -571,6 +571,18 @@ function L2() {
                   Previous
                 </button>
               )}
+              {currentStep == 1 && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    navigate("/user/dashboard")
+                  }}
+                  className="px-4 py-2 bg-red-500 text-white rounded-lg"
+                >
+                  close
+                </button>
+              )}
+              <div className="text-center font-semibold">{currentStep}{"/8"}</div>
               {currentStep < totalSteps && (
                 <button
                   type="button"
