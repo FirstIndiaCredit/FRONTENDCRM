@@ -8,7 +8,9 @@ function L1() {
   const [agents, setAgents] = useState([]);
   const [currentStep, setCurrentStep] = useState(1);
   const totalSteps = 8;
-
+  const back = () => {
+    navigate("/user/dashboard")
+  }
   const fetchAgents = async () => {
     try {
       const response = await axios.get(
@@ -563,6 +565,7 @@ function L1() {
           </h2>
           <form onSubmit={handleSubmit}>
             <div className="mb-6">{renderStep(currentStep)}</div>
+
             <div className="flex justify-between">
               {currentStep > 1 && (
                 <button
@@ -573,6 +576,16 @@ function L1() {
                   Previous
                 </button>
               )}
+              {currentStep == 1 && (
+                <button
+                  type="button"
+                  onClick={back}
+                  className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-yellow-600"
+                >
+                  close
+                </button>
+              )}
+              <div className="text-center font-semibold">{currentStep}{"/8"}</div>
               {currentStep < totalSteps && (
                 <button
                   type="button"
