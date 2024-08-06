@@ -271,13 +271,13 @@ function Signup() {
                     target="_blank"
                     href="https://firstindiacredit.com/terms-conditions/"
                   >
-                    I agree to the{" "}
-                    <span className="underline">Terms and Conditions</span>
+                    <span className="text-xs md:text-lg">I agree to the{" "}</span>
+                    <span className="underline text-xs md:text-lg">Terms & Conditions</span>
                   </a>
                 </div>
                 <button
                   type="submit"
-                  className="mt-6 rounded-lg bg-blue-600 px-4 py-2 text-center text-base font-semibold text-white shadow-md outline-none ring-blue-500 ring-offset-2 transition hover:bg-blue-700 focus:ring-2 md:w-32"
+                  className="mt-6 w-full rounded-lg bg-blue-600 px-4 py-2 text-center text-base font-semibold text-white shadow-md outline-none ring-blue-500 ring-offset-2 transition hover:bg-blue-700 focus:ring-2 md:w-32"
                   disabled={loading}
                 >
                   {loading ? "Signing Up..." : "Sign Up"}

@@ -79,19 +79,15 @@ function VerifyOTP() {
   return (
     <div className="flex min-h-screen flex-wrap text-slate-800">
       <div className="flex w-full flex-col items-center">
-        <div className="flex justify-center py-4">
-          <a href="/" className="text-2xl font-bold text-blue-600">
-            FirstIndiaCredit.
-          </a>
-        </div>
         <div className="my-auto mx-auto flex flex-col justify-center px-6 py-8 rounded-lg items-center border lg:w-[28rem] bg-white shadow-lg">
+
           <div className="flex items-center mb-4">
             <img
               src="/logo.jpg"
               alt="Logo"
               className="w-12 h-12 rounded-lg mr-4"
             />
-            <p className="text-center text-3xl font-bold md:text-left md:leading-tight">
+            <p className="text-center text-xl md:text-3xl font-bold md:text-left md:leading-tight">
               Verify Your Email
             </p>
           </div>
@@ -122,7 +118,7 @@ function VerifyOTP() {
             {canResend ? (
               <button
                 onClick={handleResendOTP}
-                className="mt-4 rounded-lg bg-gray-600 w-full px-4 py-2 text-center text-base font-semibold text-white shadow-md outline-none ring-gray-500 ring-offset-2 transition hover:bg-gray-700 focus:ring-2 md:w-32"
+                className="mt-4 rounded-lg bg-green-600 w-full px-4 py-2 text-center text-base font-semibold text-white shadow-md outline-none ring-gray-500 ring-offset-2 transition hover:bg-gray-700 focus:ring-2 md:w-32"
               >
                 Resend OTP
               </button>

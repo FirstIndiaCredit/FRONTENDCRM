@@ -20,7 +20,7 @@ function Notification() {
 
   const fetchNotifications = async () => {
     try {
-      setIsLoading(true); // Show the loading spinner
+      setIsLoading(true);
       const response = await axios.get(
         `https://backendcrm.vercel.app/api/v2/notifications?_id=${userId}`
       );
@@ -29,7 +29,7 @@ function Notification() {
       console.error("Error fetching notifications:", error);
       setError("Failed to fetch notifications. Please try again later.");
     } finally {
-      setIsLoading(false); // Hide the loading spinner
+      setIsLoading(false);
     }
   };
 
@@ -55,11 +55,11 @@ function Notification() {
         <div className="bg-white sm:shadow-none block md:hidden sm:bg-transparent sm:static sm:top-0">
           <UserDashNavBar />
         </div>
-        <header className="flex items-center ">
+        <header className="flex rounded-lg items-center ">
           <img
             src={`/logo.jpg`}
             alt="Logo"
-            className="md:h-10 h-7 w-auto mb-6 md:ml-4 ml-4"
+            className="md:h-10 h-7 w-auto rounded-lg mb-6 md:ml-4 ml-4"
           />
           <h1 className="text-xl md:text-3xl  ml-10 mb-6 md:m-auto font-semibold md:font-semibold md:text-center md:justify-center  ">
             Notifications
@@ -73,7 +73,7 @@ function Notification() {
                 <div className="spinner">
                   <div className="logo-bounce">
                     <img
-                      src="/logo.jpg" // Update this path if your logo is stored elsewhere
+                      src="/logo.jpg"
                       alt="Logo"
                       className="logo"
                     />
@@ -99,7 +99,7 @@ function Notification() {
               ))}
             </div>
           ) : (
-            <div className="flex flex-col items-center text-center">
+            <div className="flex flex-col mt-16 items-center text-center">
               <img
                 src="/nonotification.jpg"
                 alt="No notifications"

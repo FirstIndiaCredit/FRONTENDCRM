@@ -132,7 +132,7 @@ function Signin() {
               </div>
               <Link
                 to={"/forgotpassword"}
-                className="mb-6 text-center text-sm font-medium text-gray-600 md:text-left"
+                className="mb-6 text-center text-sm font-medium text-blue-600/80 md:text-left"
               >
                 Forgot password?
               </Link>
