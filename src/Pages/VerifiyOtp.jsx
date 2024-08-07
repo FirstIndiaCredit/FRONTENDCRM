@@ -90,7 +90,11 @@ function VerifyOTP() {
             <p className="text-center text-xl md:text-3xl font-bold md:text-left md:leading-tight">
               Verify Your Email
             </p>
+
           </div>
+          <p className="flex text-center text-sm md:text-lg font-bold text-red-500 md:text-left md:leading-tight">
+            O​tp has send on your Email
+          </p>
           {error && <div className="mb-4 text-red-600">{error}</div>}
           <form
             onSubmit={handleOTPSubmit}

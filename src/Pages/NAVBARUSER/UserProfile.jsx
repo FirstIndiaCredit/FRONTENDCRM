@@ -96,9 +96,9 @@ function UserProfile() {
                   <img
                     src={`/logo.jpg`}
                     alt="Logo"
-                    className="md:h-10 ml-2 h-7 w-auto md:ml-4 border-2 border-white rounded-lg "
+                    className="md:h-10 ml-2 h-7 w-auto md:ml-3 border-2 border-white rounded-lg "
                   />
-                  <h1 className="text-2xl md:text-3xl md:m-auto mr-20 md:font-semibold md:text-center md:justify-center font-semibold">
+                  <h1 className="text-2xl  md:text-3xl md:m-auto mr-20 md:font-semibold md:text-center md:justify-center font-semibold">
                     User Profile
                   </h1>
                 </div>
@@ -120,8 +120,8 @@ function UserProfile() {
                       )}
                     </div>
                   </div>
-                  <div className="flex  px-14 justify-center gap-10 mt-10">
-                    <label className="py-3.5 px-7  font-bold w-full text-base text-indigo-100 focus:outline-none bg-blue-700 rounded-lg border border-indigo-200 hover:bg-indigo-900 focus:z-10 focus:ring-4 focus:ring-indigo-200 text-center">
+                  <div className="flex justify-center px-8 mt-10">
+                    <label className="py-3 px-8  font-bold w-full text-base text-indigo-100 focus:outline-none bg-blue-700 rounded-lg border border-indigo-200 hover:bg-indigo-900 focus:z-10 focus:ring-4 focus:ring-indigo-200 text-center">
                       Change picture
                       <input
                         type="file"
@@ -129,9 +129,11 @@ function UserProfile() {
                         onChange={handleImageChange}
                       />
                     </label>
+                  </div>
+                  <div className="flex justify-center px-8 mt-2">
                     <button
                       type="button"
-                      className="py-3.5 px-7 w-full   text-base font-bold text-white focus:outline-none bg-red-500 rounded-lg border border-indigo-200 hover:bg-red-700 transition-all hover:text-white focus:z-10 focus:ring-4 focus:ring-indigo-200"
+                      className="py-3 px-8 w-full  text-base font-bold text-white focus:outline-none bg-red-500 rounded-lg border border-indigo-200 hover:bg-red-700 transition-all hover:text-white focus:z-10 focus:ring-4 focus:ring-indigo-200"
                       onClick={() => {
                         setUserImage("");
                         localStorage.removeItem("userImage");
@@ -143,7 +145,7 @@ function UserProfile() {
                   <div className="px-14 pb-4 pt-4">
                     <button
                       type="button"
-                      className="mt-8 mb-4 w-full mx-auto py-2 px-20 text-white bg-[#004aad] hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-bold rounded-lg text-lg"
+                      className="mt-8 mb-4 w-full mx-auto py-3 md:py-3 text-white bg-[#004aad] hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-bold rounded-lg text-lg"
                       onClick={() => setIsEditing(!isEditing)}
                     >
                       {isEditing ? "Cancel" : "Edit Profile"}
@@ -267,12 +269,12 @@ function UserProfile() {
                       </div>
                     )}
                     <hr className="my-4" />
-                    <div
+                    {/* <div
                       onClick={handleDelete}
                       className="font-medium w-full text-center px-4 rounded-md py-1 cursor-pointer hover:bg-red-500 transition-all hover:text-white ring-1 ring-red-500 text-red-600 my-5 mx-2 text-xl"
                     >
                       Delete Account
-                    </div>
+                    </div> *
                     {isdelete && (
                       <div className="fixed inset-0 flex  items-center bg-black/90 backdrop-blur-sm h-screen w-screen justify-center z-999">
                         <div className="bg-red-600 xl:ml-60 relative p-4 rounded-lg shadow-2xl">
@@ -286,23 +288,18 @@ function UserProfile() {
                             Type exactly <strong> "Delete My Account"</strong>{" "}
                             to proceed
                           </p>
-                          <div className="flex gap-3 justify-center">
+                          {/* <div className="flex gap-3 justify-center">
                             <input
                               className="w-full rounded-md px-5 font-semibold text-red-800"
                               value={deleteInput}
                               onChange={(e) => setDeleteInput(e.target.value)}
                               type="text"
                             />
-                            <button
-                              onClick={confirmDelete}
-                              className="bg-red-800 hover:bg-white hover:text-red-500 transition-all px-5 py-1 rounded-md text-white"
-                            >
-                              Delete
-                            </button>
-                          </div>
+
+                          </div> 
                         </div>
                       </div>
-                    )}
+                    )}*/}
                   </div>
                 </div>
               </div>
